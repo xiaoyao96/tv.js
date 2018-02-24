@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/tv.js"></script>
+    <style>
+        .a div{
+            display: block;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="a">
+        <div></div>
+        <div></div>
+    </div>
+<script>
+    tgo.init({
+        allFocus : $('.a').children()
+    });
+    $('.a').children().focus(function () {
+        $(this).css('background','red');
+    }).blur(function () {
+        $(this).css('background','transparent');
+    }).ok(function () {
+        alert($(this).index());
+    });
+    $(tgo.allFocus[0]).focus();
+</script>
+</body>
+</html>
