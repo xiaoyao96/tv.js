@@ -1,0 +1,16 @@
+{
+    "id" : "0001",
+    "parent": "选择器",
+    "title":"#id",
+    "return" : "TGOFOCUS",
+    "summary" : "根据给定的ID匹配一个元素。",
+    "arguments": "id ：用于搜索的，通过元素的 id 属性中给定的值",
+    "example" : [
+      {
+        "text": "查找ID为 \"myDiv\" 的元素。",
+        "html":"<div id=\"notMe\">id=\"notMe\"</div>\n<div id=\"myDiv\">id=\"myDiv\"</div>",
+        "tv" : "$(\"#myDiv\")",
+        "result" : "[ <div id=\"myDiv\">id=\"myDiv\"</div> ]"
+      }
+    ]
+}

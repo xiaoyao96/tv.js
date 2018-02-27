@@ -1,0 +1,16 @@
+{
+  "id" : "0001",
+  "parent": "选择器",
+  "title":"concat()",
+  "return" : "TGOFOCUS",
+  "summary" : "TGOFOCUS类型的api之一，用于拼接TGOFOCUS对象。",
+  "arguments": "TGOFOCUS：参数类型须为TGOFOCUS。",
+  "example" : [
+    {
+      "text": "查找ID为 \"myDiv1\" 和 \"myDiv2\" 的元素。",
+      "html":"<div id=\"myDiv1\">id=\"myDiv1\"</div>\n<div id=\"myDiv2\">id=\"myDiv2\"</div>",
+      "tv" : "$(\"#myDiv1\").concat($(\"#myDiv2\"))",
+      "result" : "[ <div id=\"myDiv1\">id=\"myDiv1\"</div>, <div id=\"myDiv2\">id=\"myDiv2\"</div>]"
+    }
+  ]
+}

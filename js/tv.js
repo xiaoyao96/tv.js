@@ -1178,6 +1178,13 @@ TGOFOCUS.prototype = {
         }
         return this;
     },
+    next: function () {
+        var index = tgo.querySelector(this[0]).index();
+        if(this[0].parentNode.children.length < index + 1){
+            return tgo.querySelector(this[0]).parent().children().eq(index + 1);
+        }
+        return new TGOFOCUS();
+    },
     /**
      *
      * @param children

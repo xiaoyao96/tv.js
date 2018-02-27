@@ -4,30 +4,253 @@
     <meta charset="UTF-8">
     <script src="js/tv.js"></script>
     <style>
-        .a div{
+        body,ul,p{
+            font-family: 微软雅黑;
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        .menu{
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 230px;
+            height: 100%;
+            background: #2b2f3e;
+            box-sizing: border-box;
+            padding: 20px 0;
+            -webkit-box-shadow: inset -5px 0 8px rgba(0,0,0,.3);
+            box-shadow: inset -5px 0 8px rgba(0,0,0,.3);
+            overflow-y: auto;
+        }
+        .menu > ul{
+            width: 100%;
+        }
+        .menu > ul > li{
+            width: 100%;
+            border-bottom: 1px solid #2f3444;
+            color: #7a7e8a;
+            font-size: 13px;
+            font-weight: bolder;
+        }
+        .menu > ul > li a{
+            text-decoration: none;
+            color: inherit;
             display: block;
-            width: 100px;
-            height: 100px;
+            width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
+            transition: 0.4s background;
+            height: 32px;
+            line-height: 32px;
+        }
+        .menu >ul >li.active > a,.menu > ul > li > a:hover{
+            background: #FF404B;
+            color: #EEE;
+        }
+        .menu >ul >li.active > a i,.menu > ul > li > a:hover i{
+            background-position: 0px -152px;
+        }
+        .menu > ul > li > a i{
+            background-image: url(http://jquery.cuishifeng.cn/css/common_z_d066456.png);
+            background-position: 0px -38px;
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+            position:relative;
+            top: 2px;
+        }
+        .menu .sub-ul{
+            display: none;
+        }
+        .menu >ul >li.active .sub-ul{
+            display: block;
+        }
+        .menu .sub-ul > li{
+            height: auto;
+            line-height: normal;
+        }
+       .menu .sub-ul > li > a{
+            height: auto;
+            line-height: normal;
+            width: auto;
+            display: inline-block;
+            padding: 6px 10px 6px 20px;
+            color: #909298;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all .2s;
+            -moz-transition: all .2s;
+            -webkit-transition: all .2s;
+            -o-transition: all .2s;
+            font-size: 13px;
+            border-left: 0 solid #5e6271;
+            text-align: left;
+            font-weight: normal;
+        }
+        .menu .sub-ul > li > a:hover{
+            border-width: 5px;
+            color: #DDDDDD;
+        }
+
+        .main{
+            padding-left: 230px;
+            box-sizing: border-box;
+        }
+        .main header{
+            font-size: 14px;
+            padding: 12px 0;
+        }
+        .m-wraper{
+            padding: 0 10px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+        .content h2{
+            margin: 5px 0;
+            padding: 10px;
+            background: #7BC0F4;
+            border-left: 5px solid #146BBB;
+            color: #333;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .content h3{
+            margin: 5px 0 5px 5px;
+            padding: 5px;
+            background: #F5BDB3;
+            border-left: 4px solid #ED4D1E;
+            color: #333;
+            font-size: 14px;
+        }
+        .content h4{
+            margin: 20px 10px 5px;
+            padding: 5px;
+            border-left: 3px solid #5478e7;
+            color: #444;
+            font-size: 12px;
+        }
+        .content h5{
+            font-size: 12px;
+            margin: 0 10px;
+            padding: 8px 10px;
+            color: #0865BB;
+        }
+        .content pre{
+            margin: 0 10px 20px;
+            padding: 10px;
+            border: 1px dashed #3569a9;
+            display: block;
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+        .content p{
+            text-indent: 24px;
+            font-size: 14px;
+            margin: 5px 10px;
+            padding: 0;
         }
     </style>
+    <script src="https://cdn.bootcss.com/vue/2.5.13/vue.min.js"></script>
 </head>
 <body>
-    <div class="a">
-        <div></div>
-        <div></div>
+<div id="app">
+    <aside class="menu">
+        <ul>
+            <li v-for="m,i in menusOpt" :class="{active:m.active}">
+                <a href="javascript:void(0)" @click="menuAct(i)">
+                    <i></i>
+                    <span>{{m.title}}</span>
+                </a>
+                <ul class="sub-ul" v-if="m.children && m.children.length > 0">
+                    <li v-for="c in m.children" @click="reqContent(c.id)">
+                        <a href="javascript:void(0)">{{c.name}}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </aside>
+    <div class="main">
+        <div class="m-wraper" v-if="c != null">
+            <header>
+                首页 > {{c.parent}} > {{c.title}}
+            </header>
+            <div class="content">
+                <h2>{{c.title}}</h2>
+                <h3>概述</h3>
+                <p v-html="c.summary"></p>
+                <h3>参数</h3>
+                <p v-html="c.arguments"></p>
+                <h3>示例</h3>
+                <template v-for="ms in c.example">
+                    <h4>描述</h4>
+                    <p>{{ms.text}}</p>
+                    <h5>HTML代码：</h5>
+                    <pre>{{ms.html}}</pre>
+                    <h5>tv.js代码：</h5>
+                    <pre>{{ms.tv}}</pre>
+                    <h5>运行结果：</h5>
+                    <pre>{{ms.result}}</pre>
+                </template>
+
+            </div>
+        </div>
+
     </div>
+</div>
+
 <script>
-    tgo.init({
-        allFocus : $('.a').children()
-    });
-    $('.a').children().focus(function () {
-        $(this).css('background','red');
-    }).blur(function () {
-        $(this).css('background','transparent');
-    }).ok(function () {
-        alert($(this).index());
-    });
-    $(tgo.allFocus[0]).focus();
+    new Vue({
+        el: '#app',
+        data: function(){
+            return {
+                menusOpt:[],
+                c:null
+            }
+        },
+        methods:{
+            reqMenus:function () {
+                var _this = this;
+                var ajax = new XMLHttpRequest();
+                ajax.open('get','data/menu.json');
+                ajax.onreadystatechange = function () {
+                    if (ajax.readyState==4 &&ajax.status==200) {
+                        _this.$set(_this,'menusOpt',JSON.parse(ajax.responseText));
+                    }
+                };
+                ajax.send();
+            },
+            reqContent: function (id) {
+                var _this = this;
+                var ajax = new XMLHttpRequest();
+                ajax.open('get','data/content/'+ id +'.json');
+                ajax.onreadystatechange = function () {
+                    if (ajax.readyState==4 &&ajax.status==200) {
+                        _this.$set(_this,'c',JSON.parse(ajax.responseText));
+                    }
+                };
+                ajax.send();
+            },
+            menuAct : function (i) {
+                this.menusOpt[i].active = !this.menusOpt[i].active;
+                if(this.menusOpt[i].active == true){
+                    this.menusOpt.forEach(function (t,j){
+                        if(j != i){
+                            t.active = false;
+                        }
+                    })
+                }
+            }
+        },
+        created:function () {
+            this.reqMenus();
+        }
+    })
 </script>
 </body>
 </html>

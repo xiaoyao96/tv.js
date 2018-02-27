@@ -1,0 +1,16 @@
+{
+  "id" : "0004",
+  "parent": "选择器",
+  "title":"selector1,selector2,selectorN",
+  "return" : "TGOFOCUS",
+  "summary" : "将每一个选择器匹配到的元素合并后一起返回。\n你可以指定任意多个选择器，并将匹配到的元素合并到一个结果内。",
+  "arguments": "selector1 ：一个有效的选择器\nselector2 ：一个有效的选择器\nselector3 ：一个有效的选择器",
+  "example" : [
+    {
+      "text": "查找class为 \"myDiv\" 的元素。",
+      "html":"<div class=\"notMe\"><p>class=\"notMe\"</p></div>\n<div class=\"myDiv\">class=\"myDiv\"</div>",
+      "tv" : "$(\".myDiv\")",
+      "result" : "[ <div class=\"myDiv\">class=\"myDiv\"</div> ]"
+    }
+  ]
+}

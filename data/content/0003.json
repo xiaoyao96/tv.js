@@ -1,0 +1,16 @@
+{
+  "id" : "0003",
+  "parent": "选择器",
+  "title":"tagName",
+  "return" : "TGOFOCUS",
+  "summary" : "根据标签名匹配多个元素。",
+  "arguments": "tagName ：用于搜索的，通过元素tagName属性匹配",
+  "example" : [
+    {
+      "text": "查找tagName为 p 的元素。",
+      "html":"<p>p标签</p>\n<span>span标签</span>\n<div>div标签</div>",
+      "tv" : "$(\"p\")",
+      "result" : "[ <p>p标签</p> ]"
+    }
+  ]
+}

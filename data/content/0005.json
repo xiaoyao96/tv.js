@@ -1,0 +1,22 @@
+{
+  "id" : "0005",
+  "parent": "选择器",
+  "title":"Array<element> || TGOFOCUS",
+  "return" : "TGOFOCUS",
+  "summary" : "把数组或类数组或TGOFOCUS类型的对象转化为TGOFOCUS对象。",
+  "arguments": "Array<element>：由DOM元素组成的数组或类数组\nTGOFOCUS：TGOFOCUS对象",
+  "example" : [
+    {
+      "text": "查找tagName为 p 的元素。",
+      "html":"<p>p标签</p>\n<span>span标签</span>\n<div>div标签</div>",
+      "tv" : "$(document.getElementsByTagName('p'))",
+      "result" : "[ <p>p标签</p> ]"
+    },
+    {
+      "text": "查找tagName为 span 的元素。",
+      "html":"<p>p标签</p>\n<span>span标签</span>\n<div>div标签</div>",
+      "tv" : "$($('span'))",
+      "result" : "[ <span>span标签</span> ]"
+    }
+  ]
+}

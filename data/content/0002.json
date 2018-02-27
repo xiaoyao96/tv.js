@@ -1,0 +1,16 @@
+{
+  "id" : "0002",
+  "parent": "选择器",
+  "title":".class",
+  "return" : "TGOFOCUS",
+  "summary" : "根据给定的class名匹配多个元素。",
+  "arguments": "class ：用于搜索的，通过元素的 className 属性中给定的值",
+  "example" : [
+    {
+      "text": "查找class为 \"myDiv\" 的元素。",
+      "html":"<div class=\"notMe\"><p>class=\"notMe\"</p></div>\n<div class=\"myDiv\">class=\"myDiv\"</div>",
+      "tv" : "$(\".myDiv\")",
+      "result" : "[ <div class=\"myDiv\">class=\"myDiv\"</div> ]"
+    }
+  ]
+}
