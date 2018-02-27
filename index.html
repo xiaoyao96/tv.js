@@ -214,13 +214,14 @@
             }
         },
         methods:{
-            reqMenus:function () {
+            reqMenus:function (call) {
                 var _this = this;
                 var ajax = new XMLHttpRequest();
                 ajax.open('get','data/menu.json');
                 ajax.onreadystatechange = function () {
                     if (ajax.readyState==4 &&ajax.status==200) {
                         _this.$set(_this,'menusOpt',JSON.parse(ajax.responseText));
+                        call();
                     }
                 };
                 ajax.send();
@@ -247,8 +248,11 @@
                 }
             }
         },
-        created:function () {
-            this.reqMenus();
+        mounted:function () {
+            this.reqMenus(function () {
+                this.menuAct(0);
+                this.reqContent("0001")
+            }.bind(this));
         }
     })
 </script>
