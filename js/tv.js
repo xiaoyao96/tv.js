@@ -1669,5 +1669,20 @@ TGO.showMessage = function (title, ok, cancel, okCallback, cancelCallback) {
         event.preventDefault();
     }
 };
-
+//设置当前焦点
+tgo.setCurrentFocus = function (ele) {
+    if(ele instanceof TGOFOCUS && ele[0] instanceof Element){
+        tgo.currentFocus = ele[0]
+    }else{
+        throw new Error('设置焦点时类型错误')
+    }
+};
+//设置所有焦点
+tgo.setAllFocus = function (ele) {
+    if(ele instanceof TGOFOCUS){
+        tgo.allFocus = ele;
+    }else{
+        throw new Error('设置焦点时类型错误，必须为TGOFOCUS类型');
+    }
+};
 var $ = tgo.querySelector;

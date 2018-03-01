@@ -30,11 +30,15 @@
     "active":false
   },
   {
-    "title":"事件绑定",
+    "title":"事件",
     "children":[
       {
-        "name" : "focus(Function)",
+        "name":"初始化 tgo.init()",
         "id" : "1001"
+      },
+      {
+        "name" : "获取焦点和失去焦点事件",
+        "id" : "1002"
       },
       {
         "name" : "blur(Function)",

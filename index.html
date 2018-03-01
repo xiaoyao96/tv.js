@@ -194,8 +194,15 @@
                     <pre>{{ms.html}}</pre>
                     <h5>tv.js代码：</h5>
                     <pre>{{ms.tv}}</pre>
-                    <h5>运行结果：</h5>
-                    <pre>{{ms.result}}</pre>
+                    <template v-if="ms.result">
+                        <h5>运行结果：</h5>
+                        <pre>{{ms.result}}</pre>
+                    </template>
+                    <template v-if="ms.try">
+                        <button @click="ms.try.show = true && (eval(ms.try.js))">点我运行</button>
+                        <pre v-show="ms.try.show" v-html="ms.try.html"></pre>
+                    </template>
+
                 </template>
 
             </div>

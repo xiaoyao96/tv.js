@@ -1,15 +1,15 @@
 {
   "id" : "1001",
-  "parent": "事件绑定",
-  "title":"focus(Function)",
+  "parent": "事件",
+  "title":"初始化 tgo.init()",
   "return" : "TGOFOCUS",
-  "summary" : "TGOFOCUS的api之一，给元素添加作为焦点时的事件（事件绑定），或元素获取焦点（事件执行）",
-  "arguments": "Function：元素作为当前焦点时执行的方法<br />空：设置元素作为当前焦点，并执行方法",
+  "summary" : "在使用焦点功能模块时，需调用的方法 tgo.init()",
+  "arguments": "object：object.allFocus 为设置所有可获取的焦点列表，TGOFOCUS类型；object.miss 为焦点上下左右移动时允许的误差范围，默认为0，可空",
   "example" : [
     {
-      "text": "给 \"myFocus1\" 和 \"myFocus2\" 绑定焦点事件，并使其中一个获取焦点",
-      "html": "<div class=\"focus\" id=\"myFocus1\">myFocus1</div><div class=\"focus\" id=\"myFocus2\">myFocus2</div>",
-      "tv": "$(\".focus\").focus(function(){ $(this).css('background-color','red') }) \n$(\"#myFocus1\").focus()",
+      "text": "设置id为 \"myFocus1\" 和 \"myFocus2\" 的元素为焦点元素，移动误差范围为10px",
+      "html": "<div class=\"focus\" id=\"myFocus1\">myFocus1</div>\n<div class=\"focus\" id=\"myFocus2\">myFocus2</div>",
+      "tv": "tgo.init({allFocus:$('.focus'),miss:10})",
       "try" : {
         "code":""
       }

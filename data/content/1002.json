@@ -1,0 +1,20 @@
+{
+  "id" : "1001",
+  "parent": "事件",
+  "title":"获取(focus)焦点和失去(blur)焦点",
+  "return" : "TGOFOCUS",
+  "summary" : "可给元素设置获取（失去）焦点时的行为",
+  "arguments": "Function：元素获取（失去）焦点执行的方法<br />空：设置元素获取（失去）焦点，并执行方法",
+  "example" : [
+    {
+      "text": "给 \"myFocus1\" 和 \"myFocus2\" 绑定事件，获取焦点时背景为红色，失去焦点时为透明色，并且初始焦点在myFous1上",
+      "html": "<div class=\"focus\" id=\"myFocus1\">myFocus1</div>\n<div class=\"focus\" id=\"myFocus2\">myFocus2</div>",
+      "tv": "tgo.init({allFocus:$('.focus'),miss:10});\n$(\".focus\").focus(function(){ $(this).css('background-color','red')}).blur(function(){ $(this).css('background-color','transparent') }); \n$(\"#myFocus1\").focus()",
+      "try" : {
+        "html":"<div class=\"focus\" id=\"myFocus1\">myFocus1</div>\n<div class=\"focus\" id=\"myFocus2\">myFocus2</div>",
+        "js":"tgo.init({allFocus:$('.focus'),miss:10});\n$(\".focus\").focus(function(){ $(this).css('background-color','red')}).blur(function(){ $(this).css('background-color','transparent') }); \n$(\"#myFocus1\").focus()",
+        "show":false
+      }
+    }
+  ]
+}
