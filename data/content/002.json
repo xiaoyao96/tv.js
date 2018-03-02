@@ -1,0 +1,8 @@
+{
+  "id" : "002",
+  "parent": "开始",
+  "title":"设置“a标签”",
+  "return" : "TGOFOCUS",
+  "summary" : "设置哪些元素是“a标签”（或可获取的焦点）。有了这个范围，tv.js才能计算用户按上下左右时的离当前焦点最近的元素。在焦点模块没有初始化之前，可使用tgo.init({allFocus:element})来设置哪些是焦点，在初始化后可用语法：tgo.setAllFocus(element)设置。",
+  "arguments": "element: TGOFOCUS类型，该类型为$(selector)的返回类型。"
+}

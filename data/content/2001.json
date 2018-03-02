@@ -1,0 +1,22 @@
+{
+  "id" : "2001",
+  "parent": "路由模块",
+  "title":"介绍与配置",
+  "return" : "",
+  "summary" : "用于提取当前页面url中信息，或跳转页面时传输信息的工具。默认router作为全局变量可直接使用，类名为tgo.Router(options)",
+  "arguments" : "options：object类型，<br/>options.parentFile：string类型 指定根父级目录，如http://xxx.xx.xxx/parent 中 “parent”为根父级目录。<br/>options.routes：Array类型<br />    options.routes[0].path：string类型 页面在根父级目录下的路径地址<br/>    options.routes[0].name：string类型 页面名称<br/><br/>",
+  "example":[
+    {
+      "text" : "获取 http://localhost:8080/index.html?a=1&b=2 页面的参数键值对",
+      "tv" : "router.query.a; //1\nrouter.query.b; //2"
+    },
+    {
+      "text" : "配置一个路由",
+      "tv" : "var router = new tgo.Router({\nparentFile : 'tv.js' ,\nroutes: [\n{path : '/index.htm',name : 'index'}\n]});",
+      "try":{
+        "text":"跳转到首页",
+        "js": "var router = new tgo.Router({\nparentFile : 'tv.js' ,\nroutes: [\n{path : '/index.htm',name : 'index'}\n]});router.push({name:'index'});"
+      }
+    }
+  ]
+}

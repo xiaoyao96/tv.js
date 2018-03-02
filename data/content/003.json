@@ -1,10 +1,10 @@
 {
-  "id" : "1002",
+  "id" : "003",
   "parent": "事件",
-  "title":"focus(function?) || blur(function?)",
+  "title":"设置焦点样式",
   "return" : "TGOFOCUS",
-  "summary" : "可给元素设置获取（失去）焦点时的行为",
-  "arguments": "Function：元素获取（失去）焦点执行的方法<br />空：设置元素获取（失去）焦点，并执行方法",
+  "summary" : "$(selector).focus(function)|$(selector).blur(function) 可给元素设置获取（失去）焦点时的行为",
+  "arguments": "function：元素获取（失去）焦点执行的方法<br />空：设置元素获取（失去）焦点，并执行方法",
   "example" : [
     {
       "text": "给 \"myFocus1\" 和 \"myFocus2\" 绑定事件，获取焦点时背景为红色，失去焦点时为透明色，并且初始焦点在myFous1上",

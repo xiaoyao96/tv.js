@@ -1,0 +1,21 @@
+{
+  "id" : "1003",
+  "parent": "事件",
+  "title":"ok(function?)",
+  "return" : "TGOFOCUS",
+  "summary" : "可给元素设置当用户按ok(enter键)时执行的事件",
+  "arguments": "Function：绑定的ok事件，空：主动触发元素的ok事件",
+  "example" : [
+    {
+      "text": "给 \"myFocus1\" 和 \"myFocus2\" 选中后按ok时弹出自己id",
+      "html": "<div class=\"focus\" id=\"myFocus1\">myFocus1</div>\n<div class=\"focus\" id=\"myFocus2\">myFocus2</div>",
+      "tv": "tgo.init({allFocus:$('.focus'),miss:10});\n$(\".focus\").focus(function(){ $(this).css('background-color','red')}).blur(function(){ $(this).css('background-color','transparent') }).ok(function(){alert(this.id)}); \n$(\"#myFocus1\").focus()",
+      "try" : {
+        "html":"<div class=\"focus\" id=\"myFocus1\">myFocus1</div>\n<div class=\"focus\" id=\"myFocus2\">myFocus2</div>",
+        "js":"tgo.currentFocus && $(tgo.currentFocus).blur();tgo.init({allFocus:$('.focus'),miss:10});\n$(\".focus\").focus(function(){ $(this).css('background-color','red')}).blur(function(){ $(this).css('background-color','transparent') }).ok(function(){alert(this.id)}); ; \n$(\"#myFocus1\").focus()",
+        "show":false,
+        "text":"请按键盘↑和↓移动，并尝试按ok（enter）键"
+      }
+    }
+  ]
+}

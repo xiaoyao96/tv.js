@@ -1,0 +1,22 @@
+{
+  "id" : "2002",
+  "parent": "路由模块",
+  "title":"跳转",
+  "return" : "",
+  "summary" : "用于根据路由配置，跳转页面，push(options) || replace(options)",
+  "arguments" : "options：类型string || object, <br/>options为string时代表跳转的路径，<br/>options为object时，有options.name，为将跳转的页面路由名称；options.path，为相对跳转的路径名称；options.query，为跳转时url后传值。",
+  "example":[
+    {
+      "text" : "获取 http://localhost:8080/index.html?a=1&b=2 页面的参数键值对",
+      "tv" : "router.query.a; //1\nrouter.query.b; //2"
+    },
+    {
+      "text" : "配置一个路由",
+      "tv" : "var router = new tgo.Router({\nparentFile : 'tv.js' ,\nroutes: [\n{path : '/index.htm',name : 'index'}\n]});router.push({name:'index'});",
+      "try":{
+        "text":"跳转到首页",
+        "js": "var router = new tgo.Router({\nparentFile : 'tv.js' ,\nroutes: [\n{path : '/index.htm',name : 'index'}\n]});router.push({name:'index'});"
+      }
+    }
+  ]
+}

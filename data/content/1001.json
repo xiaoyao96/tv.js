@@ -1,18 +1,15 @@
 {
   "id" : "1001",
   "parent": "事件",
-  "title":"初始化 tgo.init()",
+  "title":"tgo.init(options)",
   "return" : "TGOFOCUS",
-  "summary" : "在使用焦点功能模块时，需调用的方法 tgo.init()",
-  "arguments": "object：object.allFocus 为设置所有可获取的焦点列表，TGOFOCUS类型；object.miss 为焦点上下左右移动时允许的误差范围，默认为0，可空",
+  "summary" : "在使用焦点功能模块时，需调用的方法 tgo.init(options)，只需初始化一次。",
+  "arguments": "options：options.allFocus 为设置所有可获取的焦点列表，TGOFOCUS类型；options.miss 为焦点上下左右移动时允许的误差范围，默认为0，可空",
   "example" : [
     {
       "text": "设置id为 \"myFocus1\" 和 \"myFocus2\" 的元素为焦点元素，移动误差范围为10px",
       "html": "<div class=\"focus\" id=\"myFocus1\">myFocus1</div>\n<div class=\"focus\" id=\"myFocus2\">myFocus2</div>",
-      "tv": "tgo.init({allFocus:$('.focus'),miss:10})",
-      "try" : {
-        "code":""
-      }
+      "tv": "tgo.init({allFocus:$('.focus'),miss:10})"
     }
   ]
 }

@@ -30,22 +30,40 @@
     "active":false
   },
   {
+    "title" : "焦点模块",
+    "children" : [
+      {
+        "name" : "介绍",
+        "id" : "001"
+      },
+      {
+        "name" : "设置“a标签”",
+        "id" : "002"
+      },
+      {
+        "name" : "设置焦点样式",
+        "id" : "003"
+      }
+    ],
+    "active":false
+  },
+  {
     "title":"事件",
     "children":[
       {
-        "name":"初始化 tgo.init()",
+        "name":"tgo.init(options)",
         "id" : "1001"
       },
       {
-        "name" : "获取焦点和失去焦点事件",
+        "name" : "tgo.setAllFocus(element)",
+        "id" : "1005"
+      },
+      {
+        "name" : "focus(function?) || blur(function?)",
         "id" : "1002"
       },
       {
-        "name" : "blur(Function)",
-        "id" : "1002"
-      },
-      {
-        "name" : "ok(Function)",
+        "name" : "ok(function?)",
         "id" : "1003"
       },
       {
@@ -56,10 +74,15 @@
     "active":false
   },
   {
-    "title":"焦点移动",
+    "title":"路由模块",
     "children":[
       {
-        "name" : "#id"
+        "name" : "介绍",
+        "id":"2001"
+      },
+      {
+        "name" : "跳转",
+        "id":"2002"
       }
     ],
     "active":false

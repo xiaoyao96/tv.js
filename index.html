@@ -12,6 +12,7 @@
         ul{
             list-style: none;
         }
+        a:focus{outline:none;}
         .menu{
             position: fixed;
             left: 0;
@@ -54,7 +55,7 @@
             background-position: 0px -152px;
         }
         .menu > ul > li > a i{
-            background-image: url(https://jquery.cuishifeng.cn/css/common_z_d066456.png);
+            background-image: url(img/icon.png);
             background-position: 0px -38px;
             width: 16px;
             height: 16px;
@@ -150,10 +151,16 @@
             word-wrap: break-word;
         }
         .content p{
-            text-indent: 24px;
             font-size: 14px;
             margin: 5px 10px;
             padding: 0;
+        }
+        .abs{
+            position: absolute;
+            border: 1px solid #cccccc;
+        }
+        .rel{
+            position: relative;
         }
     </style>
     <script src="https://cdn.bootcss.com/vue/2.5.13/vue.min.js"></script>
@@ -182,29 +189,41 @@
             </header>
             <div class="content">
                 <h2>{{c.title}}</h2>
-                <h3>概述</h3>
-                <p v-html="c.summary"></p>
-                <h3>参数</h3>
-                <p v-html="c.arguments"></p>
-                <h3>示例</h3>
-                <template v-for="ms in c.example">
-                    <h4>描述</h4>
-                    <p>{{ms.text}}</p>
-                    <h5>HTML代码：</h5>
-                    <pre>{{ms.html}}</pre>
-                    <h5>tv.js代码：</h5>
-                    <pre>{{ms.tv}}</pre>
-                    <template v-if="ms.result">
-                        <h5>运行结果：</h5>
-                        <pre>{{ms.result}}</pre>
-                    </template>
-                    <template v-if="ms.try">
-                        <button @click="ms.try.show = true && (eval(ms.try.js))">点我运行</button>
-                        <pre v-show="ms.try.show" v-html="ms.try.html"></pre>
-                    </template>
-
+                <template v-if="c.summary">
+                    <h3>概述</h3>
+                    <p v-html="c.summary"></p>
                 </template>
-
+                <template v-if="c.arguments">
+                    <h3>参数</h3>
+                    <p v-html="c.arguments"></p>
+                </template>
+                <template v-if="c.example && c.example.length > 0">
+                    <h3>示例</h3>
+                    <template v-for="ms in c.example">
+                        <template v-if="ms.text">
+                            <h4>描述</h4>
+                            <p>{{ms.text}}</p>
+                        </template>
+                        <template v-if="ms.html">
+                            <h5>HTML代码：</h5>
+                            <pre>{{ms.html}}</pre>
+                        </template>
+                        <template v-if="ms.tv">
+                            <h5>tv.js代码：</h5>
+                            <pre>{{ms.tv}}</pre>
+                        </template>
+                        <template v-if="ms.result">
+                            <h5>运行结果：</h5>
+                            <pre>{{ms.result}}</pre>
+                        </template>
+                        <template v-if="ms.try">
+                            <button v-show="!ms.try.show" @click="ms.try.show = true && (eval(ms.try.js))">点我运行</button>
+                            <button v-if="ms.try.button && ms.try.show" @click="eval(ms.try.button.js)">{{ms.try.button.value}}</button>
+                            <p v-show="ms.try.show">{{ms.try.text}}</p>
+                            <div v-show="ms.try.show" v-html="ms.try.html"></div>
+                        </template>
+                    </template>
+                </template>
             </div>
         </div>
 
