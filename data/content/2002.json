@@ -12,10 +12,10 @@
     },
     {
       "text" : "配置一个路由",
-      "tv" : "var router = new tgo.Router({\nparentFile : 'tv.js' ,\nroutes: [\n{path : '/index.htm',name : 'index'}\n]});router.push({name:'index'});",
+      "tv" : "var router = new tgo.Router({\nparentFile : 'tv.js' ,\nroutes: [\n{path : '/index.html',name : 'index'}\n]});router.push({name:'index'});",
       "try":{
         "text":"跳转到首页",
-        "js": "var router = new tgo.Router({\nparentFile : 'tv.js' ,\nroutes: [\n{path : '/index.htm',name : 'index'}\n]});router.push({name:'index'});"
+        "js": "var router = new tgo.Router({\nparentFile : 'tv.js' ,\nroutes: [\n{path : '/index.html',name : 'index'}\n]});router.push({name:'index'});"
       }
     }
   ]

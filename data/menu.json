@@ -48,6 +48,20 @@
     "active":false
   },
   {
+    "title":"路由模块",
+    "children":[
+      {
+        "name" : "介绍",
+        "id":"2001"
+      },
+      {
+        "name" : "跳转",
+        "id":"2002"
+      }
+    ],
+    "active":false
+  },
+  {
     "title":"事件",
     "children":[
       {
@@ -69,20 +83,6 @@
       {
         "name" : "delegate(selector,eventType,Function)",
         "id" : "1004"
-      }
-    ],
-    "active":false
-  },
-  {
-    "title":"路由模块",
-    "children":[
-      {
-        "name" : "介绍",
-        "id":"2001"
-      },
-      {
-        "name" : "跳转",
-        "id":"2002"
       }
     ],
     "active":false
