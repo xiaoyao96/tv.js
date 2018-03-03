@@ -3,8 +3,8 @@
   "parent": "事件",
   "title":"delegate(selector,eventType,function)",
   "return" : "TGOFOCUS",
-  "summary" : "事件委托，可委托一个已存在元素，给子级绑定三种基本事件（focus、blur、ok）事件",
-  "arguments": "selector：string类型，子级标签或类名。eventType：string类型，事件类型（focus、blur、ok）。function：执行的事件",
+  "summary" : "虚拟焦点模块中的虚拟事件委托，可委托一个已存在元素，给子级绑定三种虚拟事件（focus、blur、ok）事件",
+  "arguments": "selector：string类型，子级标签或类名。eventType：string类型，虚拟事件类型（focus、blur、ok）。function：执行的事件",
   "example" : [
     {
       "text": "给id为 \"myFocusList\"元素的子级元素绑定焦点事件，需再每次新增一个元素时，把新元素添加到全部焦点列表中。",

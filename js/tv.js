@@ -1180,10 +1180,52 @@ TGOFOCUS.prototype = {
     },
     next: function () {
         var index = tgo.querySelector(this[0]).index();
-        if(this[0].parentNode.children.length < index + 1){
+        if(this[0].parentNode.children.length <= index + 1){
             return tgo.querySelector(this[0]).parent().children().eq(index + 1);
         }
         return new TGOFOCUS();
+    },
+    on: function (eventType,selector,callback) {
+        var selectorType = '';
+        (selector.indexOf('.') > -1 && (selectorType = 'class')) ||
+            (selector.indexOf('#') > -1 && (selectorType = 'id')) ||
+            (selectorType = 'tag');
+
+        Array.prototype.each.call(this,function (obj,i) {
+            var f = function (e) {
+                e = e || window.event || arguments.callee.caller.arguments[0];
+                var oriEle = e.srcElement;
+                if (!oriEle)
+                {
+                    oriEle = e.target;
+                }
+                while (oriEle !== obj){
+                    var find = (selectorType == 'tag' && oriEle.tagName.toLowerCase() == selector) ||
+                        (selectorType == 'id' && oriEle.id == selector.substring(1)) ||
+                        (selectorType == 'class') && tgo.querySelector(oriEle).hasClass(selector.substring(1));
+                    find && (callback.call(oriEle,e));
+                    oriEle = oriEle.parentNode;
+                }
+            };
+            if(window.attachEvent){
+                obj.attachEvent('on' + eventType,f);
+            }else{
+                obj.addEventListener(eventType,f)
+            }
+        });
+        return this;
+    },
+    hasClass:function (className) {
+      var str = this[0].className;
+      var arr = str.split(' ');
+      var find = false;
+      arr.each(function (obj) {
+          if(obj == className){
+            find = true;
+            return false;
+          }
+      })
+        return find;
     },
     /**
      *

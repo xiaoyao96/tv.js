@@ -217,7 +217,7 @@
                             <pre>{{ms.result}}</pre>
                         </template>
                         <template v-if="ms.try">
-                            <button v-show="!ms.try.show" @click="ms.try.show = true && (eval(ms.try.js))">点我运行</button>
+                            <button v-show="!ms.try.show" @click="runTry(ms)">点我运行</button>
                             <button v-if="ms.try.button && ms.try.show" @click="eval(ms.try.button.js)">{{ms.try.button.value}}</button>
                             <p v-show="ms.try.show">{{ms.try.text}}</p>
                             <div v-show="ms.try.show" v-html="ms.try.html"></div>
@@ -240,6 +240,10 @@
             }
         },
         methods:{
+            runTry:function (ms) {
+                ms.try.show = true;
+                (eval(ms.try.js))
+            },
             reqMenus:function (call) {
                 var _this = this;
                 var ajax = new XMLHttpRequest();

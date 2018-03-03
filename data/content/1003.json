@@ -3,7 +3,7 @@
   "parent": "事件",
   "title":"ok(function?)",
   "return" : "TGOFOCUS",
-  "summary" : "可给元素设置当用户按ok(enter键)时执行的事件",
+  "summary" : "可给元素设置虚拟事件中当用户按ok(enter键)时执行的事件",
   "arguments": "Function：绑定的ok事件，空：主动触发元素的ok事件",
   "example" : [
     {

@@ -30,18 +30,18 @@
     "active":false
   },
   {
-    "title" : "焦点模块",
+    "title" : "虚拟焦点模块",
     "children" : [
       {
         "name" : "介绍",
         "id" : "001"
       },
       {
-        "name" : "设置“a标签”",
+        "name" : "设置虚拟焦点",
         "id" : "002"
       },
       {
-        "name" : "设置焦点样式",
+        "name" : "虚拟焦点的样式控制",
         "id" : "003"
       }
     ],
@@ -83,6 +83,10 @@
       {
         "name" : "delegate(selector,eventType,Function)",
         "id" : "1004"
+      },
+      {
+        "name":"on(eventType,seletor,function)",
+        "id":"1006"
       }
     ],
     "active":false

@@ -1,0 +1,25 @@
+{
+  "id" : "1006",
+  "parent": "事件",
+  "title":"on(eventType,seletor,function)",
+  "return" : "",
+  "summary" : "DOM元素的事件委托，同jquery中on的用法。",
+  "arguments": "eventType：string类型 事件名<br/>selector：string类型，支持类、id、标签名选择器<br/>function：function类型 回调",
+  "example":[
+    {
+      "text":"点击按钮添加元素，每个元素点击后会变色。",
+      "html":"<ul id=\"list\">\n\n</ul>",
+      "tv":"$('#list').on('click','li',function(){$(this).css('background-color','#ccc')})",
+      "try":{
+        "html":"<ul id=\"list\"></ul>",
+        "js":"$('#list').on('click','li',function(){$(this).css('background-color','#ccc')})",
+        "show":false,
+        "text":"请单击+按钮添加元素",
+        "button" : {
+          "value" : "+",
+          "js" : "$('#list').append('<li>'+$('#list').children().length+'</li>')"
+        }
+      }
+    }
+  ]
+}

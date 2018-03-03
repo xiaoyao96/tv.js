@@ -1,8 +1,8 @@
 {
-  "id" : "1002",
+  "id" : "1005",
   "parent": "事件",
   "title":"tgo.setAllFocus(element)",
   "return" : "",
-  "summary" : "用于已初始化焦点模块后，设置哪些dom元素可获取焦点",
+  "summary" : "用于已初始化虚拟焦点模块后，设置虚拟焦点集合",
   "arguments": "element: TGOFOCUS类型，该类型为选择器的返回类型。"
 }
