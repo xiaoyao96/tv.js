@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrapper{
+            clear: both;
+        }
+        .wrapper div{
+            float: left;
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper" id="main1">
+        <div>1.按上为自定义焦点</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+    </div>
+
+    <div class="wrapper" id="main2">
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>10.按下为自定义焦点</div>
+    </div>
+    <script src="js/tv.js"></script>
+    <script>
+        //获取所有焦点, concat用于拼接两个FOCUS对象。
+        var elements = $('#main1').children().concat( $('#main2').children() );
+        //初始化
+        tgo.init({
+            allFocus: elements, //设置所有可获取焦点的element;
+            miss: 5, //允许元素之间重叠5像素以内，默认值为0。
+        })
+        //设置focus、blur、ok事件
+        elements.focus(function(item){
+            console.log(tgo.currentFocus); //当前焦点
+            $(this).css('background-color', 'red');
+        }).blur(function(item){
+            $(this).css('background-color', 'transparent');
+        }).ok(function(){
+            alert($(this).text());
+        })
+        //自定义事件
+        tgo.$focus = [
+            {
+                element: elements[0],
+                direction: {
+                    top: function(){
+                        alert('这是一个向上的自定义焦点事件，return 的值为焦点目标');
+                        return $('#main2').children().eq(4)
+                    }
+                }
+            },
+            {
+                element: elements[9],
+                direction: {
+                    bottom: function(){
+                        alert('这是一个向下的自定义焦点事件，return 的值为焦点目标');
+                        return $('#main1').children().eq(0)
+                    }
+                }
+            },
+        ]
+        elements.eq(0).focus();
+    </script>
+</body>
+</html>
