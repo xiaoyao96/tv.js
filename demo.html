@@ -16,6 +16,13 @@
             margin: 10px;
             border: 1px solid #000;
         }
+        #input{
+            clear: both;
+            width: 200px;
+            height: 30px;
+            line-height: 30px;
+            border: 2px solid #000;
+        }
     </style>
 </head>
 <body>
@@ -34,20 +41,26 @@
         <div>9</div>
         <div>10.按下为自定义焦点</div>
     </div>
+    <div id="input">
+        <div></div>
+    </div>
+
+
+
     <script src="js/tv.js"></script>
     <script>
-        //获取所有焦点, concat用于拼接两个FOCUS对象。
-        var elements = $('#main1').children().concat( $('#main2').children() );
+        //获取所有焦点, concat用于拼接FOCUS对象。
+        var elements = $('#main1').children().concat( $('#main2').children() ).concat( $('#input') );
         //初始化
         tgo.init({
             allFocus: elements, //设置所有可获取焦点的element;
             miss: 5, //允许元素之间重叠5像素以内，默认值为0。
         })
         //设置focus、blur、ok事件
-        elements.focus(function(item){
+        elements.focus(function(){
             console.log(tgo.currentFocus); //当前焦点
             $(this).css('background-color', 'red');
-        }).blur(function(item){
+        }).blur(function(){
             $(this).css('background-color', 'transparent');
         }).ok(function(){
             alert($(this).text());
@@ -75,6 +88,20 @@
         ]
         //设置初始焦点
         elements.eq(0).focus();
+
+
+        //设置输入框。
+        $('#input').setInput(0 ,{
+            value: '110',
+            maxLength: 12
+        }).ok(function(){
+            //重写了66行的事件
+            alert('输入框的值为' + $(this).val())
+        })
+
+
+
+
     </script>
 </body>
 </html>
